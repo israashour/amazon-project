@@ -86,6 +86,7 @@ function renderProductsGrid() {
 
   document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     button.addEventListener('click', () => {
+      button.innerHTML = 'Added!';
       const productId = button.dataset.productId;
       addToCart(productId);
       updateCartQuantity();
@@ -98,4 +99,13 @@ function renderProductsGrid() {
       const search = document.querySelector('.js-search-bar').value;
       window.location.href = `amazon.html?search=${search}`;
     });
+
+  document.querySelector('.js-search-bar')
+    .addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const searchTerm = document.querySelector('.js-search-bar').value;
+        window.location.href = `amazon.html?search=${searchTerm}`;
+      }
+    })
+
 };

@@ -24,12 +24,14 @@ async function loadPage() {
   const deliveryTime = dayjs(productDetails.estimatedDeliveryTime);
   const percentProgress = ((today - orderTime) / (deliveryTime - orderTime)) * 100;
 
+  const deliverdMessage = today < deliveryTime ? 'Arriving on' : 'Deliverd on';
+
   const trackingHTML = `
     <a class="back-to-orders-link link-primary" href="orders.html">
       View all orders
     </a>
     <div class="delivery-date">
-      Arriving on ${
+      ${deliverdMessage} ${
         dayjs(productDetails.estimatedDeliveryTime).format('dddd, MMMM D')
       }
     </div>
